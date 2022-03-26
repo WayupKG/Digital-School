@@ -2,7 +2,7 @@ from django import forms
 from django.core.exceptions import ValidationError
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login, logout, authenticate
-from django.utils.translation import  gettext_lazy as _
+from django.utils.translation import  ugettext as _
 
 from .models import User
 
