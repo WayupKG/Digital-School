@@ -21,6 +21,7 @@ local_settings.py
 *backend/*/migrations/*
 !*backend/*/migrations
 !*backend/*/migrations/__init__.py
+**/dev_templates/
 
 **/__pycache__
 **/__pycache__/**

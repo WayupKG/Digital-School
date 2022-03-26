@@ -1,0 +1,47 @@
+{% load static %}
+<div class="header header-transparent dark-text" id="header-main">
+    <div class="container">
+        <nav id="navigation" class="navigation navigation-landscape">
+            <div class="nav-header">
+                <a class="nav-brand" href="#">
+                    <img src="{% static 'images/logo/DS-logo-02.svg' %}" class="logo" alt="" />
+                </a>
+                <div class="nav-toggle"></div>
+                <div class="mobile_nav">
+                    <ul>
+                        {% if user.is_authenticated %}
+                            {% include 'base/mobile_header.html' %}
+                        {% else %}
+                            <li>
+                                <a href="javascript:void(0);" data-toggle="modal" data-target="#login" class="crs_yuo12 w-auto text-white theme-bg">
+                                    <span class="embos_45"><i class="fas fa-sign-in-alt mr-1"></i>Войти</span>
+                                </a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+            <div class="nav-menus-wrapper">
+                <ul class="nav-menu">
+                    <li class="active"><a href="{% url 'index' %}">Главное</a></li>
+                    <li><a href="#">О нас</a></li>
+                    {% if user.is_authenticated %}
+                        <li><a href="">Категория</a></li>   
+                    {% endif %} 
+                </ul>
+                
+                <ul class="nav-menu nav-menu-social align-to-right">
+                    {% if user.is_authenticated %}
+                        {% include 'base/mobile_header.html' %}
+                    {% else %}
+                        <li class="add-listing theme-bg">
+                            <a href="#" class="alio_green" data-toggle="modal" data-target="#login">
+                                <i class="fas fa-sign-in-alt mr-1"></i><span class="dn-lg">Войти</span>
+                            </a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>

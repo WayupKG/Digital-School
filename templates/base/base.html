@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% load static i18n %}
+<html lang="ru">
+	<head>
+		<meta charset="utf-8"/>
+		<meta name="author" content="El-Kitep"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>{% block title %}{% trans 'Цифровая Школа «DS»' %}{% endblock title %}</title>
+		{% block description %}
+			<meta content="{% trans 'Открытие новых технологий в школьном образовании' %}" name="description">
+			<meta name="subject" content="{% trans 'Открытие новых технологий в школьном образовании' %}">
+		{% endblock description %}
+		<meta name="theme-color" content="#ffffff">
+		<meta name="keywords" content="{% block keywords %}{% endblock keywords %}">
+		<meta property="og:title" content="{% trans 'Цифровая Школа «DS»' %}">
+		<meta property="og:image" content="{% static 'images/logo/DS-logo-01.svg' %}">
+		<meta property="og:site_name" content="Цифровая Школа «DS»">
+		<meta property="og:url" content="#">
+		<link href="{% static 'images/favicon.svg' %}" rel="shortcut icon" type="image/x-icon">
+		<link href="{% static 'css/fonts-stylesheet.css' %}" rel="stylesheet">
+		<link href="{% static 'css/main.css' %}" rel="stylesheet">
+		<link href="{% static 'css/styles.css' %}" rel="stylesheet">
+		{% block link %}{% endblock link %}
+	</head>
+    <body>
+        <div id="main-wrapper">
+			{% include 'base/header.html' %}
+			<div class="clearfix"></div>
+			{% block content %}{% endblock content %}
+			{% include 'base/login-modal.html' %}
+			{% include 'base/footer.html' %}
+		</div>
+		{% include 'base/script.html' %}
+		{% block script %}{% endblock script %}
+	</body>
+</html>

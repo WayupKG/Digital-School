@@ -1,0 +1,56 @@
+.loader {
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #3498db;
+    width: 80px;
+    height: 80px;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loading__modal__page {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    background-color: #00052682;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.book_item .crs_grid {
+    height: 436px;
+}
+
+.book_item .crs_grid_foot {
+    position: absolute;
+    bottom: 0;
+    background-color: white;
+}
+
+.flipbook-menuBottom {
+    background-color: white;
+} 
+
+.ed_detail_img img {
+    border-radius: 10px;
+}
+
+.md-pad {
+    padding: 0 5px !important;
+}

@@ -1,0 +1,47 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}Авторизоваться в электронно-библиотечную систему "Эл-Китеп"{% endblock title %}
+
+{% block content %}
+<section>
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-xl-7 col-lg-8 col-md-12 col-sm-12"><div id="loading__auth__page"></div>
+				<form action="{% url 'auth_v' %}" method="POST" id="sign__in">{% csrf_token %}
+					<div class="crs_log_wrap">
+						<div class="crs_log__thumb">
+							<img src="https://via.placeholder.com/1920x1200" class="img-fluid" alt="" />
+						</div>
+						<div class="crs_log__caption">
+							<div class="rcs_log_123">
+								<div class="rcs_ico"><i class="fas fa-lock"></i></div>
+							</div>
+							<div class="rcs_log_124">
+								<div class="Lpo09"><h4>Войдите в свою учетную запись</h4></div>
+								<div class="form-auth-errors text-center mt-2 px-2"></div>
+								<div class="form-group">
+									<label>Email</label>
+									<input type="email" name="email" class="form-control" placeholder="support@elkitep.com" required/>
+								</div>
+								<div class="form-group">
+									<label>Пароль</label>
+									<input type="password" name="password" class="form-control" placeholder="*******" required/>
+								</div>
+								<div class="form-group">
+									<button type="submit" class="btn full-width btn-md theme-bg text-white">Авторизоваться</button>
+								</div>
+							</div>
+						</div>
+						<div class="crs_log__footer d-flex justify-content-between">
+							<div class="fhg_45"><p class="musrt"><a href="{% url 'sign_up' %}" class="theme-cl">У вас нет учетной записи?</a></p></div>
+							<div class="fhg_45"><p class="musrt"><a href="forgot.html" class="text-danger">Забыли пароль?</a></p></div>
+						</div>
+					</div>
+				</form>
+			</div>
+
+		</div>
+	</div>
+</section>
+{% endblock content %}

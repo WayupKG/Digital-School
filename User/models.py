@@ -66,6 +66,7 @@ class Parent(models.Model):
         verbose_name_plural = _('Родители')
 
     PARENT = (
+        (None, 'Выберите родителя'),
         ('father', 'Отец'),
         ('mother', 'Мать')
     )
@@ -74,7 +75,6 @@ class Parent(models.Model):
     first_name = models.CharField(_('Имя'), max_length=40)
     sur_name = models.CharField(_('Отчество'), max_length=50, blank=True, null=True)
     parent = models.CharField(_(""), max_length=10, choices=PARENT)
-    address = models.CharField(_("Адрес"), max_length=255)
     phone = models.CharField(_("Номер телефона"), max_length=15)
     job = models.CharField(_("Работа"), max_length=255)
 
@@ -98,6 +98,7 @@ class Student(models.Model):
         verbose_name_plural = _('Ученики')
 
     GENDER = (
+        (None, 'Выберите пол'),
         ('man', 'Мужчина'),
         ('woman', 'Женщина')
     )
@@ -106,14 +107,13 @@ class Student(models.Model):
     first_name = models.CharField(_('Имя'), max_length=40)
     sur_name = models.CharField(_('Отчество'), max_length=50, blank=True, null=True)
     account = models.OneToOneField(User, verbose_name=_("Аккаунт"), on_delete=models.PROTECT)
-    gender = models.CharField(_(""), max_length=10, choices=GENDER)
+    gender = models.CharField(_("Пол"), max_length=10, choices=GENDER)
     address = models.CharField(_("Адрес"), max_length=255)
     phone = models.CharField(_("Номер телефона"), max_length=15)
     school = models.ForeignKey('School.School', verbose_name=_("Школа"),
                                on_delete=models.PROTECT, related_name="students")
     edu_grade = models.ForeignKey('School.AcademicClass', verbose_name=_("Академический класс"), on_delete=models.PROTECT)
-    image = models.ImageField(upload_to=upload_to_image, null=True, blank=True)
-    
+    image = models.ImageField(verbose_name=_("Фотография"), upload_to=upload_to_image, null=True, blank=True)
     parents = models.ManyToManyField(Parent, verbose_name=_("Родители"),
                                     related_name='students')
     created_at = models.DateTimeField(auto_now_add=True)
