@@ -11,5 +11,5 @@ class UserAdmin(admin.ModelAdmin):
 @admin.register(Student)
 class StudentAdmin(admin.ModelAdmin):
     model = Student
-    list_display = ('get_full_name', 'account', 'gender', 'school', 'edu_grade', 'created', 'updated')
+    list_display = ('get_full_name', 'account', 'gender', 'school', 'edu_grade', 'created_at', 'updated_at')
     list_filter = ('school', 'edu_grade', 'gender')
