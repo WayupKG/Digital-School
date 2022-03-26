@@ -2,10 +2,10 @@ from django.db import models
 from django.core.mail import send_mail
 from django.contrib.auth.models import PermissionsMixin
 from django.contrib.auth.base_user import AbstractBaseUser
-from django.utils.translation import gettext_lazy as _
+from django.utils.translation import ugettext as _
 
-from .managers import UserManager
 from Core.services import get_translit
+from .managers import UserManager
 
 
 def upload_to_image(instance, filename):
@@ -121,7 +121,7 @@ class Student(models.Model):
 
     objects = models.Manager()
 
-    def __str__(self) -> str:
+    def __str__(self):
         return f"{self.last_name} {self.first_name}"
 
     def get_full_name(self):
