@@ -68,7 +68,7 @@ class Parent(models.Model):
     father_last_name = models.CharField(_('Фамилия'), max_length=40)
     father_first_name = models.CharField(_('Имя'), max_length=40)
     father_sur_name = models.CharField(_('Отчество'), max_length=50, blank=True, null=True)
-    father_phone = models.CharField(_("Номер телефона"), max_length=15)
+    father_phone = models.CharField(_("Номер телефона"), max_length=20)
     father_job = models.CharField(_("Работа"), max_length=255)
 
     mother_last_name = models.CharField(_('Фамилия'), max_length=40)
@@ -110,7 +110,7 @@ class Student(models.Model):
     gender = models.CharField(_("Пол"), max_length=10, choices=GENDER)
     date_birth = models.DateField(_("Дата рождения"))
     address = models.CharField(_("Адрес"), max_length=255)
-    phone = models.CharField(_("Номер телефона"), max_length=15)
+    phone = models.CharField(_("Номер телефона"), max_length=20)
     school = models.ForeignKey('School.School', verbose_name=_("Школа"),
                                on_delete=models.PROTECT, related_name="students")
     edu_grade = models.ForeignKey('School.AcademicClass', verbose_name=_("Академический класс"), on_delete=models.PROTECT)
