@@ -1,0 +1,138 @@
+{% extends 'base/dashboard.html' %}
+{% load static %}
+
+{% block title %}Информация о ученике{% endblock title %}
+
+{% block content %}
+<div class="row">
+    <div class="col-xl-7 col-lg-6 col-md-12">
+        <div class="dashboard_wrap">
+            
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 mb-4">
+                    <h6 class="m-0">Информация о ученике</h6>
+                </div>
+            </div>
+            
+            <div class="row justify-content-center">
+                <div class="col-xl-12 col-lg-12 col-md-12 row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 form-group smalls">
+                        <label>Фамилия:</label>
+                        <input type="text" class="form-control" value="{{ student.last_name }}" disabled/>
+                    </div>
+                    <div class="col-xl-12 col-lg-12 col-md-12 form-group smalls">
+                        <label>Имя:</label>
+                        <input type="text" class="form-control" value="{{ student.first_name }}" disabled/>
+                    </div>
+                    <div class="col-xl-12 col-lg-12 col-md-12 form-group smalls">
+                        <label>Отчество:</label>
+                        <input type="text" class="form-control" value="{{ student.sur_name }}" disabled/>
+                    </div>
+                    <div class="col-xl-12 col-lg-12 col-md-12 form-group smalls">
+                        <label>Email</label>
+                        <input type="text" class="form-control" value="{{ student.account.email }}" disabled/>
+                    </div>
+                    <div class="col-xl-6 col-lg-12 col-md-12 form-group smalls">
+                        <label>Поль</label>
+                        <input type="text" class="form-control" value="{{ student.gender_v }}" disabled/>
+                    </div>
+                    <div class="col-xl-6 col-lg-12 col-md-12 form-group smalls">
+                        <label>Дата рождения</label>
+                        <input type="text" class="form-control" value="{{ student.date_birth }}" disabled/>
+                    </div>
+                    <div class="col-xl-12 col-lg-12 col-md-12 form-group smalls">
+                        <label>Адрес</label>
+                        <input type="text" class="form-control" value="{{ student.address }}" disabled/>
+                    </div>
+                    <div class="col-xl-12 col-lg-12 col-md-12 form-group smalls">
+                        <label>Номер телефона</label>
+                        <input type="text" class="form-control" value="{{ student.phone }}" disabled/>
+                    </div>
+                    <div class="col-xl-12 col-lg-12 col-md-12 form-group smalls">
+                        <label>Школа</label>
+                        <input type="text" class="form-control" value="{{ student.school }}" disabled/>
+                    </div>
+                    <div class="col-xl-12 col-lg-12 col-md-12 form-group smalls">
+                        <label>Академический класс</label>
+                        <input type="text" class="form-control" value="{{ student.edu_grade }}" disabled/>
+                    </div>
+
+                    <div class="col-xl-12 col-lg-12 col-md-12 form-group smalls">
+                        <a href="{{ student.get_update_url }}" class="btn theme-bg text-white" >Обновить информацию</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-xl-5 col-lg-6 col-md-12">
+        <div class="dashboard_wrap">
+            <div class="row justify-content-center">
+                <div class="col-xl-12 col-lg-12 col-md-12 row">
+                    <div class="form-group smalls">
+                        <h3>Данные Отца</h3>
+                    </div>
+                    <div class="col-xl-12 col-lg-12 col-md-12 form-group smalls">
+                        <label>Фамилия:</label>
+                        <input type="text" class="form-control" value="{{ student.parent.father_last_name }}" disabled/>
+                    </div>
+                    <div class="col-xl-12 col-lg-12 col-md-12 form-group smalls">
+                        <label>Имя:</label>
+                        <input type="text" class="form-control" value="{{ student.parent.father_first_name }}" disabled/>
+                    </div>
+                    <div class="col-xl-12 col-lg-12 col-md-12 form-group smalls">
+                        <label>Отчество:</label>
+                        <input type="text" class="form-control" value="{{ student.parent.father_sur_name }}" disabled/>
+                    </div>
+                    <div class="col-xl-6 col-lg-12 col-md-12 form-group smalls">
+                        <label>Номер телефона</label>
+                        <input type="text" class="form-control" value="{{ student.parent.father_phone }}" disabled/>
+                    </div>
+                    <div class="col-xl-6 col-lg-12 col-md-12 form-group smalls">
+                        <label>Место работы</label>
+                        <input type="text" class="form-control" value="{{ student.parent.father_job }}" disabled/>
+                    </div>
+                    <div class="col-12 form-group smalls">
+                        <hr><h3>Данные Матери</h3>
+                    </div>
+                    <div class="col-xl-12 col-lg-12 col-md-12 form-group smalls">
+                        <label>Фамилия:</label>
+                        <input type="text" class="form-control" value="{{ student.parent.mother_last_name }}" disabled/>
+                    </div>
+                    <div class="col-xl-12 col-lg-12 col-md-12 form-group smalls">
+                        <label>Имя:</label>
+                        <input type="text" class="form-control" value="{{ student.parent.mother_first_name }}" disabled/>
+                    </div>
+                    <div class="col-xl-12 col-lg-12 col-md-12 form-group smalls">
+                        <label>Отчество:</label>
+                        <input type="text" class="form-control" value="{{ student.parent.mother_sur_name }}" disabled/>
+                    </div>
+                    <div class="col-xl-6 col-lg-12 col-md-12 form-group smalls">
+                        <label>Номер телефона</label>
+                        <input type="text" class="form-control" value="{{ student.parent.mother_phone }}" disabled/>
+                    </div>
+                    <div class="col-xl-6 col-lg-12 col-md-12 form-group smalls">
+                        <label>Место работы</label>
+                        <input type="text" class="form-control" value="{{ student.parent.mother_job }}" disabled/>
+                    </div>
+                    <div class="form-group smalls">
+                        <a href="{{ student.get_update_url }}" class="btn theme-bg text-white" >Обновить информацию</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+{% block script %}
+    <script src="{% static 'js/jquery.maskedinput.min.js' %}"></script>
+    <script type="text/javascript">
+        jQuery(function ($) {
+            $("#id_phone").mask("+996 (111)-11-11-11");
+        });
+        document.getElementById("id_sur_name").required = false;// находите эл-нт по id
+		document.getElementById("id_image").required = false;// находите эл-нт по id
+    </script>
+{% endblock script %}

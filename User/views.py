@@ -1,11 +1,11 @@
-from webbrowser import get
 from django.shortcuts import redirect, render
-from django.views.generic import View, TemplateView, FormView
+from django.views.generic import View, TemplateView, FormView, DeleteView
 from django.http import JsonResponse
 from django.contrib.auth import login, logout
 
 from .forms import UserRegisterForm, ParentForm, StudentRegisterForm, AuthenticationForm
 from .models import Student, Parent
+from .mixins import AdminRequiredMixin
 
 
 class SignIn(TemplateView):
@@ -42,9 +42,14 @@ class SignUpStudent(View):
                     parent.save()
                     user.save()
                     student.save()
-
+                    return redirect('successfully')
         return render(self.request, self.template_name, context)
 
+
+class SignUpSuccessfully(TemplateView):
+    """Страница Успеха"""
+    template_name = 'successfully.html'
+    
 
 class AuthenticationValidator(View):
     """ Валидатор аутентификации """
@@ -57,6 +62,41 @@ class AuthenticationValidator(View):
         else:
             context['errors'] = form.errors
         return JsonResponse(context)
+
+
+class ActiveStudentView(AdminRequiredMixin, View):
+    """Активировать аккаунт ученика"""
+    def get(self, request, pk, *args, **kwargs):
+        student = Student.objects.select_related('account', 'school').get(pk=pk)
+        if student.school.admin != request.user:
+            return self.handle_no_permission()
+        student.account.is_active = True
+        student.account.save()
+        return redirect('ribbon')
+    
+
+class InActiveStudentView(AdminRequiredMixin, View):
+    """Деактивировать аккаунт ученика"""
+    def get(self, request, pk, *args, **kwargs):
+        student = Student.objects.select_related('account', 'school').get(pk=pk)
+        if student.school.admin != request.user:
+            return self.handle_no_permission()
+        student.account.is_active = False
+        student.account.save()
+        return redirect('ribbon')
+
+
+class RemoveStudentView(AdminRequiredMixin, View):
+    """Удаление аккаунт ученика"""
+    def get(self, request, pk, *args, **kwargs):
+        student = Student.objects.select_related('account', 'school').get(pk=pk)
+        if student.school.admin != request.user:
+            return self.handle_no_permission()
+        user = student.account
+        student.parent.delete()
+        student.delete()
+        user.delete()
+        return redirect('ribbon')
 
 
 def sys_logout(request):

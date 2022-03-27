@@ -54,3 +54,49 @@
 .md-pad {
     padding: 0 5px !important;
 }
+
+#DataTable_wrapper .btn-secondary {
+    background-color: rgb(3 185 124 / 55%) !important;
+}
+
+#DataTable_wrapper .btn-secondary:hover {
+    background-color: #03b97c !important;
+}
+
+#DataTable_filter {
+    display: inline-block;
+    float: right;
+}
+
+#DataTable_filter label {
+    font-size: 15px;
+}
+
+#DataTable_filter input {
+    height: 48px !important;
+    padding-left: 15px;
+    margin-left: 10px !important;
+    width: 400px;
+    box-shadow: none !important;
+    background: #ffffff;
+    border: 1px solid #76787b;
+    color: #707e9c;
+    border-radius: 4px;
+}
+
+.dataTables_paginate .paginate_button {
+    display: inline-block;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.dataTables_paginate .paginate_button:hover {
+    background-color: #03b97c;
+    color: #f3f3f3;
+}
+
+.trip {
+    padding: 5px;
+    border-radius: 6px;
+}

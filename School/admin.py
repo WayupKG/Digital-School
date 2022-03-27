@@ -4,9 +4,9 @@ from .models import School, AcademicClass
 
 @admin.register(School)
 class SchoolAdmin(admin.ModelAdmin):
-    list_display = ('title', 'number', 'training_base', 'is_active', 'created_at', 'updated_at')
+    list_display = ('title', 'training_base', 'is_active', 'created_at', 'updated_at')
     list_filter = ('is_active',)
-    search_fields = ('title', 'number')
+    search_fields = ('title',)
 
 
 @admin.register(AcademicClass)

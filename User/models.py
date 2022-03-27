@@ -1,5 +1,5 @@
 from django.db import models
-from django.core.mail import send_mail
+from django.urls import reverse
 from django.contrib.auth.models import PermissionsMixin
 from django.contrib.auth.base_user import AbstractBaseUser
 from django.utils.translation import ugettext as _
@@ -10,7 +10,7 @@ from .managers import UserManager
 
 def upload_to_image(instance, filename):
     list_file = filename.split('.')
-    return f"avatars/{instance.pk}-{instance.get_name_translit()}/{instance.get_name_translit()}.{list_file[-1]}/"
+    return f"avatars/{instance.pk}-{instance.get_full_name()}/{instance.get_full_name()}.{list_file[-1]}/"
 
 
 class User(AbstractBaseUser, PermissionsMixin):
@@ -50,17 +50,6 @@ class User(AbstractBaseUser, PermissionsMixin):
         '''Возвращает first_name, last_name с пробелом между ними.'''
         return f"{self.first_name} {self.last_name}"
 
-    def get_name_translit(self):
-        return get_translit(f'{self.last_name} {self.first_name}')
-
-    def get_short_name(self):
-        '''Возвращает сокращенное имя пользователя.'''
-        return self.first_name
-
-    def email_user(self, subject, message, from_email=None, **kwargs):
-        '''Отправляет электронное письмо этому пользователю.'''
-        send_mail(subject, message, from_email, [self.email], **kwargs)
-
     def __str__(self) -> str:
         return self.get_full_name()
 
@@ -74,13 +63,13 @@ class Parent(models.Model):
     father_last_name = models.CharField(_('Фамилия'), max_length=40)
     father_first_name = models.CharField(_('Имя'), max_length=40)
     father_sur_name = models.CharField(_('Отчество'), max_length=50, blank=True, null=True)
-    father_phone = models.CharField(_("Номер телефона"), max_length=20)
+    father_phone = models.CharField(_("Номер телефона"), max_length=25)
     father_job = models.CharField(_("Работа"), max_length=255)
 
     mother_last_name = models.CharField(_('Фамилия'), max_length=40)
     mother_first_name = models.CharField(_('Имя'), max_length=40)
     mother_sur_name = models.CharField(_('Отчество'), max_length=50, blank=True, null=True)
-    mother_phone = models.CharField(_("Номер телефона"), max_length=15)
+    mother_phone = models.CharField(_("Номер телефона"), max_length=25)
     mother_job = models.CharField(_("Работа"), max_length=255)
 
     def __str__(self) -> str:
@@ -100,6 +89,7 @@ class Parent(models.Model):
 class Student(models.Model):
     """Ученик"""
     class Meta:
+        ordering = ('-created_at',)
         verbose_name = _('Ученик')
         verbose_name_plural = _('Ученики')
 
@@ -116,7 +106,7 @@ class Student(models.Model):
     gender = models.CharField(_("Пол"), max_length=10, choices=GENDER)
     date_birth = models.DateField(_("Дата рождения"))
     address = models.CharField(_("Адрес"), max_length=255)
-    phone = models.CharField(_("Номер телефона"), max_length=20)
+    phone = models.CharField(_("Номер телефона"), max_length=25)
     school = models.ForeignKey('School.School', verbose_name=_("Школа"),
                                on_delete=models.PROTECT, related_name="students")
     edu_grade = models.ForeignKey('School.AcademicClass', verbose_name=_("Академический класс"), on_delete=models.PROTECT)
@@ -127,8 +117,23 @@ class Student(models.Model):
 
     objects = models.Manager()
 
+    def get_absolute_url(self):
+        return reverse('student_detail', kwargs={'pk': self.pk})
+    
+    def get_update_url(self):
+        return reverse('student_update', kwargs={'pk': self.pk})
+    
+    def get_active_url(self):
+        return reverse('active_student', kwargs={'pk': self.pk})
+    
+    def get_inactive_url(self):
+        return reverse('inactive_student', kwargs={'pk': self.pk})
+
     def __str__(self):
         return f"{self.last_name} {self.first_name}"
+
+    def gender_v(self):
+        return dict(self.GENDER)[self.gender]
 
     def get_full_name(self):
         '''Возвращает first_name, last_name и sur_name с пробелом между ними.'''
@@ -136,9 +141,4 @@ class Student(models.Model):
             return f"{self.first_name} {self.last_name} {self.sur_name}"
         return f"{self.first_name} {self.last_name}"
 
-    def get_name_translit(self):
-        return get_translit(self.get_full_name())
-
-    def get_short_name(self):
-        '''Возвращает сокращенное имя пользователя.'''
-        return self.first_name
+    

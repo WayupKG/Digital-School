@@ -4,7 +4,6 @@ from django.db import models
 
 class School(models.Model):
     """Школа"""
-
     class Meta:
         ordering = ('-created_at',)
         verbose_name = _('Школа')
@@ -16,19 +15,18 @@ class School(models.Model):
     )
 
     title = models.CharField(_("Называние"), max_length=255, unique=True, db_index=True)
-    number = models.PositiveSmallIntegerField(_("Номер"), default=0)
     training_base = models.CharField(_("Учебный база"), max_length=20, choices=CLASS, default='11-class')
+    admin = models.OneToOneField('User.User', verbose_name='Администратор', on_delete=models.PROTECT, related_name='school', null=True)
     is_active = models.BooleanField(_('Активный'), default=False)
     created_at = models.DateTimeField(auto_now=True)
     updated_at = models.DateTimeField(auto_now_add=True)
 
-    def __str__(self):
-        return f"{self.title} - {self.number}"
+    def __str__(self) -> str:
+        return self.title
 
 
 class AcademicClass(models.Model):
     """Академический класс"""
-
     class Meta:
         verbose_name = 'Класс'
         verbose_name_plural = 'Классы'
@@ -63,7 +61,7 @@ class AcademicClass(models.Model):
     language = models.CharField("Язык", max_length=50, choices=LANGUAGE, default='kg')
     shift = models.CharField(_("Смена"), max_length=15, choices=SHIFT, default='one')
     capacity = models.PositiveSmallIntegerField("Вместимость", default=0)
-    name_class = models.CharField("Называние класса", max_length=5)
+    name_class = models.CharField("Называние класса", max_length=10)
 
     def __str__(self) -> str:
         return str(self.name_class)

@@ -1,136 +1,113 @@
 {% extends 'base/dashboard.html' %}
+{% load static %}
+
+{% block link %}
+    <link rel="stylesheet" type="text/css" href="{% static 'plugins/DataTable/css/dataTables.bootstrap4.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'plugins/DataTable/css/responsive.bootstrap4.min.css' %}">
+{% endblock link %}
 
 {% block content %}
-    <div class="row">
-        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12">
-            <div class="dashboard_stats_wrap">
-                <div class="rounded-circle p-4 p-sm-4 d-inline-flex align-items-center justify-content-center theme-bg mb-2"><div class="position-absolute text-white h5 mb-0"><i class="fas fa-book"></i></div></div>
-                <div class="dashboard_stats_wrap_content"><h4>607</h4> <span>Number of Cources</span></div>
-            </div>	
-        </div>
-        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12">
-            <div class="dashboard_stats_wrap">
-                <div class="rounded-circle p-4 p-sm-4 d-inline-flex align-items-center justify-content-center bg-primary mb-2"><div class="position-absolute text-white h5 mb-0"><i class="fas fa-video"></i></div></div>
-                <div class="dashboard_stats_wrap_content"><h4>5.2k</h4> <span>Number of Lession</span></div>
-            </div>	
-        </div>
-        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12">
-            <div class="dashboard_stats_wrap">
-                <div class="rounded-circle p-4 p-sm-4 d-inline-flex align-items-center justify-content-center bg-warning mb-2"><div class="position-absolute text-white h5 mb-0"><i class="fas fa-users"></i></div></div>
-                <div class="dashboard_stats_wrap_content"><h4>78k</h4> <span>Number of Students</span></div>
-            </div>	
-        </div>
-        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12">
-            <div class="dashboard_stats_wrap">
-                <div class="rounded-circle p-4 p-sm-4 d-inline-flex align-items-center justify-content-center bg-purple mb-2"><div class="position-absolute text-white h5 mb-0"><i class="fas fa-gem"></i></div></div>
-                <div class="dashboard_stats_wrap_content"><h4>32k</h4> <span>Number of Enrollment</span></div>
-            </div>	
-        </div>
+<div class="row">
+    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12">
+        <div class="dashboard_stats_wrap">
+            <div class="rounded-circle p-4 p-sm-4 d-inline-flex align-items-center justify-content-center bg-purple mb-2"><div class="position-absolute text-white h5 mb-0" style="font-size: 35px"><i class="fas fa-female"></i></div></div>
+            <div class="dashboard_stats_wrap_content"><h4>{{ woman }}</h4> <span>Количество девушек</span></div>
+        </div>	
     </div>
-    <div class="row">
-        <div class="col-xl-12 col-lg-12 col-md-12">
-            <div class="dashboard_wrap">
-                <div class="row justify-content-between">
-                    <div class="col-xl-2 col-lg-3 col-md-6">
-                        <div class="form-group smalls row align-items-center">
-                            <label class="col-xl-3 col-lg-3 col-sm-2 col-form-label">Show</label>
-                            <div class="col-xl-9 col-lg-9 col-sm-10">
-                                <select id="show" class="form-control">
-                                    <option value="">&nbsp;</option>
-                                    <option value="1">10</option>
-                                    <option value="2">25</option>
-                                    <option value="3">35</option>
-                                    <option value="3">50</option>
-                                    <option value="3">100</option>
-                                    <option value="3">250</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-5 col-md-6">
-                        <div class="form-group smalls row align-items-center">
-                            <label class="col-xl-2 col-lg-2 col-sm-2 col-form-label">Search</label>
-                            <div class="col-xl-10 col-lg-10 col-sm-10">
-                                <input type="text" class="form-control">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="row">
-                    <div class="col-xl-12 col-lg-12 col-md-12 mb-2">
-                        <div class="table-responsive">
-                            <table class="table dash_list">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Name</th>
-                                        <th scope="col">Version</th>
-                                        <th scope="col">Status</th>
-                                        <th scope="col">Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td><div class="smalls lg">Blog Post Addon</div></td>
-                                        <td><span class="smalls lg">7.0.2</span></td>
-                                        <td><span class="trip theme-cl theme-bg-light">Active</span></td>
-                                        <td>
-                                            <div class="dropdown show">
-                                                <a class="btn btn-action" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    <i class="fas fa-ellipsis-h"></i>
-                                                </a>
-                                                <div class="drp-select dropdown-menu">
-                                                    <a class="dropdown-item" href="JavaScript:Void(0);">Deactive</a>
-                                                    <a class="dropdown-item" href="JavaScript:Void(0);">Delete</a>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><div class="smalls lg">URL Redirector</div></td>
-                                        <td><span class="smalls lg">4.10.2</span></td>
-                                        <td><span class="trip text-danger bg-light-danger">Inactive</span></td>
-                                        <td>
-                                            <div class="dropdown show">
-                                                <a class="btn btn-action" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    <i class="fas fa-ellipsis-h"></i>
-                                                </a>
-                                                <div class="drp-select dropdown-menu">
-                                                    <a class="dropdown-item" href="JavaScript:Void(0);">Active</a>
-                                                    <a class="dropdown-item" href="JavaScript:Void(0);">Delete</a>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><div class="smalls lg">Page Builder Addon</div></td>
-                                        <td><span class="smalls lg">4.0.2</span></td>
-                                        <td><span class="trip theme-cl theme-bg-light">Active</span></td>
-                                        <td>
-                                            <div class="dropdown show">
-                                                <a class="btn btn-action" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    <i class="fas fa-ellipsis-h"></i>
-                                                </a>
-                                                <div class="drp-select dropdown-menu">
-                                                    <a class="dropdown-item" href="JavaScript:Void(0);">Deactive</a>
-                                                    <a class="dropdown-item" href="JavaScript:Void(0);">Delete</a>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="row align-items-center justify-content-between">
-                    <div class="col-xl-6 col-lg-6 col-md-12">
-                        <p class="p-0">Showing 1 to 1 of 1 entire</p>
-                    </div>
-                </div>
-                
+    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12">
+        <div class="dashboard_stats_wrap">
+            <div class="rounded-circle p-4 p-sm-4 d-inline-flex align-items-center justify-content-center theme-bg mb-2"><div class="position-absolute text-white h5 mb-0" style="font-size: 35px"><i class="fas fa-male"></i></div></div>
+            <div class="dashboard_stats_wrap_content"><h4>{{ man }}</h4> <span>Количество мальчиков</span></div>
+        </div>	
+    </div>
+    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12">
+        <div class="dashboard_stats_wrap">
+            <div class="rounded-circle p-4 p-sm-4 d-inline-flex align-items-center justify-content-center bg-warning mb-2"><div class="position-absolute text-white h5 mb-0" style="font-size: 25px"><i class="fas fa-users"></i></div></div>
+            <div class="dashboard_stats_wrap_content"><h4>{{ all }}</h4> <span>Всего учеников</span></div>
+        </div>	
+    </div>
+    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12">
+        <div class="dashboard_stats_wrap">
+            <div class="rounded-circle p-4 p-sm-4 d-inline-flex align-items-center justify-content-center bg-primary mb-2"><div class="position-absolute text-white h5 mb-0" style="font-size: 35px"><i class="fas fa-times"></i></div></div>
+            <div class="dashboard_stats_wrap_content"><h4>{{ inactive }}</h4> <span>Неактивнные</span></div>
+        </div>	
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+        <div class="card-body">
+            <div class="table-responsive">
+            <table class="table table-hover" id="DataTable">
+                <thead>
+                    <tr>
+                        <th scope="col" class="w-35 datatable-nosort">Ф.И.О</th>
+                        <th scope="col" class="datatable-nosort">Класс</th>
+                        <th scope="col" class="datatable-nosort">Поль</th>
+                        <th scope="col" class="datatable-nosort">Отправлено</th>
+                        <th scope="col" class="datatable-nosort">Статус</th>
+                        <th scope="col" class="datatable-nosort">Действие</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for student in students %}
+                        <tr>
+                            <td><div class="smalls lg">{{ student.get_full_name }}</div></td>
+                            <td><span class="smalls lg">{{ student.edu_grade }}</span></td>
+                            <td><span class="smalls lg">{{ student.gender_v }}</span></td>
+                            <td><span class="smalls lg">{{ student.created_at }}</span></td>
+                            <td>
+                                {% if student.account.is_active %}
+                                    <span class="trip theme-cl theme-bg-light">Активный</span>
+                                {% else %}
+                                    <span class="trip text-danger bg-light-danger">Неактивный</span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                <div class="dropdown show">
+                                    <a class="btn btn-action" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fas fa-ellipsis-h"></i>
+                                    </a>
+                                    <div class="drp-select dropdown-menu">
+                                        <a class="dropdown-item" href="{{ student.get_absolute_url }}">Подробнее</a>
+                                            {% if student.account.is_active %}
+                                                <a class="dropdown-item" href="{{ student.get_inactive_url }}">Не активировать</a>
+                                            {% else %} 
+                                                <a class="dropdown-item" href="{{ student.get_active_url }}">Активировать</a>
+                                            {% endif %}   
+                                        <a class="dropdown-item" href="{% url 'remove_student' student.pk %}">Удалить</a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                        
+                </tbody>
+            </table>
             </div>
         </div>
+        </div>
     </div>
+    </div>
+
 {% endblock content %}
+
+{% block script %}
+    <script src="{% static 'js/datatable-setting.js' %}"></script>
+    <script src="{% static 'plugins/DataTable/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'plugins/DataTable/js/dataTables.bootstrap4.min.js' %}"></script>
+    <script src="{% static 'plugins/DataTable/js/dataTables.responsive.min.js' %}"></script>
+    <script src="{% static 'plugins/DataTable/js/responsive.bootstrap4.min.js' %}"></script>
+    <script src="{% static 'plugins/DataTable/jquery.dataTables.min.js' %}"></script>
+    <!-- buttons for Export datatable -->
+    <script src="{% static 'plugins/DataTable/js/dataTables.buttons.min.js' %}"></script>
+    <script src="{% static 'plugins/DataTable/js/buttons.bootstrap4.min.js' %}"></script>
+    <script src="{% static 'plugins/DataTable/js/buttons.print.min.js' %}"></script>
+    <script src="{% static 'plugins/DataTable/js/buttons.html5.min.js' %}"></script>
+    <script src="{% static 'plugins/DataTable/js/buttons.flash.min.js' %}"></script>
+    <script src="{% static 'plugins/DataTable/js/pdfmake.min.js' %}"></script>
+    <script src="{% static 'plugins/DataTable/js/vfs_fonts.js' %}"></script>
+    <script src="{% static 'plugins/DataTable/js/jszip.min.js' %}"></script>
+{% endblock script %}

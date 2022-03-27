@@ -1,0 +1,23 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}Вы успешно зарегистрировались{% endblock title %}
+
+{% block content %}
+<section>
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-xl-12 col-lg-8 col-md-12 col-sm-12"><div id="loading__auth__page"></div>
+            <div class="succ_wrap mt-5 mb-5">
+                <div class="succ_121"><i class="fas fa-thumbs-up"></i></div>
+                <div class="succ_122">
+                    <h4>Вы успешно зарегистрировались</h4>
+                    <p>Ваш учетный запись находится в стадии оброботки.</p>
+                </div>
+                <div class="succ_123"><a href="/" class="btn theme-bg text-white">На главную</a></div>
+            </div>
+			</div>
+		</div>
+	</div>
+</section>
+{% endblock content %}

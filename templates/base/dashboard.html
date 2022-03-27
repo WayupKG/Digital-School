@@ -5,9 +5,14 @@
 		<meta charset="utf-8" />
 		<meta name="author" content="Themezhub" />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>SkillUp - Online Learning Platform</title>
-        <!-- Custom CSS -->
-        <link href="{% static 'css/main.css' %}" rel="stylesheet">
+        <title>{% block title %}{% endblock title %}</title>
+        <meta name="theme-color" content="#ffffff">
+		<meta property="og:image" content="{% static 'images/logo/DS-logo-01.svg' %}">
+		<link href="{% static 'images/favicon.svg' %}" rel="shortcut icon" type="image/x-icon">
+		<link href="{% static 'css/fonts-stylesheet.css' %}" rel="stylesheet">
+		<link href="{% static 'css/main.css' %}" rel="stylesheet">
+		<link href="{% static 'css/styles.css' %}" rel="stylesheet">
+		{% block link %}{% endblock link %}
     </head>
     <body>
         <div id="main-wrapper">
@@ -45,5 +50,6 @@
 		<script src="{% static 'js/morris.min.js' %}"></script>
 		<!-- Custom Morrisjs JavaScript -->
 		<script src="{% static 'js/morris.js' %}"></script>
+		{% block script %}{% endblock script %}
 	</body>
 </html>

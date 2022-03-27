@@ -14,8 +14,6 @@ function getCookie(name) {
 }
 
 
-
-
 $("#modal__sign__in").submit(function(e) {
     e.preventDefault();
     $('#modal__page').html('<div class="loading__modal__page"><div class="loader"></div></div>')
@@ -35,7 +33,7 @@ $("#modal__sign__in").submit(function(e) {
             }
             $('.loading__modal__page').remove()
             if (data.success) {
-                window.location.href = document.location.href
+                document.location.href = '/'
             }
         }
     });
@@ -60,7 +58,7 @@ $("#sign__in").submit(function(e) {
             }
             $('.loading__auth').remove()
             if (data.success) {
-                window.location.href = document.location.href
+                window.location.href = '/'
             }
         }
     });

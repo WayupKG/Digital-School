@@ -1,0 +1,48 @@
+{% extends 'base/dashboard.html' %}
+{% load static %}
+
+{% block title %}Информация о ученике{% endblock title %}
+
+{% block content %}
+<div class="row">
+    <div class="col-xl-12 col-lg-12 col-md-12">
+        <div class="dashboard_wrap">
+            
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 mb-4">
+                    <h6 class="m-0">Информация о ученике</h6>
+                </div>
+            </div>
+            
+            <div class="row justify-content-center">
+                <div class="col-xl-12 col-lg-12 col-md-12">
+                    <form method="POST" enctype="multipart/form-data" class="row">
+                        {% for field in form %}
+                            <div class="{% if field.name == "image" %}col-xl-12{%else%}col-xl-4{% endif %} col-lg-12 col-md-12 form-group smalls">
+                                <p class="form__errors">{{ field.errors }}</p>
+                                {{ field.label_tag }}
+                                {{ field }}
+                            </div>
+						{% endfor %}
+                        <div class="col-xl-12 col-lg-12 col-md-12 form-group smalls">
+                            <button class="btn theme-bg text-white" type="submit">Сохранить</button>
+                        </div>
+                        {% csrf_token %}
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block script %}
+    <script src="{% static 'js/jquery.maskedinput.min.js' %}"></script>
+    <script type="text/javascript">
+        jQuery(function ($) {
+            $("#id_phone").mask("+996 (111)-11-11-11");
+        });
+        document.getElementById("id_sur_name").required = false;// находите эл-нт по id
+		document.getElementById("id_image").required = false;// находите эл-нт по id
+    </script>
+{% endblock script %}
