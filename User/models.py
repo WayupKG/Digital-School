@@ -43,6 +43,9 @@ class User(AbstractBaseUser, PermissionsMixin):
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ["last_name", "first_name"]
 
+    def status_v(self):
+        return dict(self.STATUS)[self.status]
+
     def get_full_name(self):
         '''Возвращает first_name, last_name с пробелом между ними.'''
         return f"{self.first_name} {self.last_name}"

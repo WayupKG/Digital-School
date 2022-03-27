@@ -1,5 +1,4 @@
 {% load static %}
-<div class="header header-transparent dark-text" id="header-main">
     <div class="container">
         <nav id="navigation" class="navigation navigation-landscape">
             <div class="nav-header">
@@ -26,7 +25,7 @@
                     <li class="active"><a href="{% url 'index' %}">Главное</a></li>
                     <li><a href="#">О нас</a></li>
                     {% if user.is_authenticated %}
-                        <li><a href="">Категория</a></li>   
+                        <li><a href="{% url 'ribbon' %}">Админ</a></li>   
                     {% endif %} 
                 </ul>
                 
@@ -44,4 +43,3 @@
             </div>
         </nav>
     </div>
-</div>

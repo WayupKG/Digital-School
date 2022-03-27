@@ -1,0 +1,136 @@
+{% extends 'base/dashboard.html' %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12">
+            <div class="dashboard_stats_wrap">
+                <div class="rounded-circle p-4 p-sm-4 d-inline-flex align-items-center justify-content-center theme-bg mb-2"><div class="position-absolute text-white h5 mb-0"><i class="fas fa-book"></i></div></div>
+                <div class="dashboard_stats_wrap_content"><h4>607</h4> <span>Number of Cources</span></div>
+            </div>	
+        </div>
+        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12">
+            <div class="dashboard_stats_wrap">
+                <div class="rounded-circle p-4 p-sm-4 d-inline-flex align-items-center justify-content-center bg-primary mb-2"><div class="position-absolute text-white h5 mb-0"><i class="fas fa-video"></i></div></div>
+                <div class="dashboard_stats_wrap_content"><h4>5.2k</h4> <span>Number of Lession</span></div>
+            </div>	
+        </div>
+        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12">
+            <div class="dashboard_stats_wrap">
+                <div class="rounded-circle p-4 p-sm-4 d-inline-flex align-items-center justify-content-center bg-warning mb-2"><div class="position-absolute text-white h5 mb-0"><i class="fas fa-users"></i></div></div>
+                <div class="dashboard_stats_wrap_content"><h4>78k</h4> <span>Number of Students</span></div>
+            </div>	
+        </div>
+        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12">
+            <div class="dashboard_stats_wrap">
+                <div class="rounded-circle p-4 p-sm-4 d-inline-flex align-items-center justify-content-center bg-purple mb-2"><div class="position-absolute text-white h5 mb-0"><i class="fas fa-gem"></i></div></div>
+                <div class="dashboard_stats_wrap_content"><h4>32k</h4> <span>Number of Enrollment</span></div>
+            </div>	
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12">
+            <div class="dashboard_wrap">
+                <div class="row justify-content-between">
+                    <div class="col-xl-2 col-lg-3 col-md-6">
+                        <div class="form-group smalls row align-items-center">
+                            <label class="col-xl-3 col-lg-3 col-sm-2 col-form-label">Show</label>
+                            <div class="col-xl-9 col-lg-9 col-sm-10">
+                                <select id="show" class="form-control">
+                                    <option value="">&nbsp;</option>
+                                    <option value="1">10</option>
+                                    <option value="2">25</option>
+                                    <option value="3">35</option>
+                                    <option value="3">50</option>
+                                    <option value="3">100</option>
+                                    <option value="3">250</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-5 col-md-6">
+                        <div class="form-group smalls row align-items-center">
+                            <label class="col-xl-2 col-lg-2 col-sm-2 col-form-label">Search</label>
+                            <div class="col-xl-10 col-lg-10 col-sm-10">
+                                <input type="text" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 mb-2">
+                        <div class="table-responsive">
+                            <table class="table dash_list">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Version</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><div class="smalls lg">Blog Post Addon</div></td>
+                                        <td><span class="smalls lg">7.0.2</span></td>
+                                        <td><span class="trip theme-cl theme-bg-light">Active</span></td>
+                                        <td>
+                                            <div class="dropdown show">
+                                                <a class="btn btn-action" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <i class="fas fa-ellipsis-h"></i>
+                                                </a>
+                                                <div class="drp-select dropdown-menu">
+                                                    <a class="dropdown-item" href="JavaScript:Void(0);">Deactive</a>
+                                                    <a class="dropdown-item" href="JavaScript:Void(0);">Delete</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><div class="smalls lg">URL Redirector</div></td>
+                                        <td><span class="smalls lg">4.10.2</span></td>
+                                        <td><span class="trip text-danger bg-light-danger">Inactive</span></td>
+                                        <td>
+                                            <div class="dropdown show">
+                                                <a class="btn btn-action" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <i class="fas fa-ellipsis-h"></i>
+                                                </a>
+                                                <div class="drp-select dropdown-menu">
+                                                    <a class="dropdown-item" href="JavaScript:Void(0);">Active</a>
+                                                    <a class="dropdown-item" href="JavaScript:Void(0);">Delete</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><div class="smalls lg">Page Builder Addon</div></td>
+                                        <td><span class="smalls lg">4.0.2</span></td>
+                                        <td><span class="trip theme-cl theme-bg-light">Active</span></td>
+                                        <td>
+                                            <div class="dropdown show">
+                                                <a class="btn btn-action" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <i class="fas fa-ellipsis-h"></i>
+                                                </a>
+                                                <div class="drp-select dropdown-menu">
+                                                    <a class="dropdown-item" href="JavaScript:Void(0);">Deactive</a>
+                                                    <a class="dropdown-item" href="JavaScript:Void(0);">Delete</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row align-items-center justify-content-between">
+                    <div class="col-xl-6 col-lg-6 col-md-12">
+                        <p class="p-0">Showing 1 to 1 of 1 entire</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+{% endblock content %}

@@ -1,6 +1,3 @@
-if (document.location.pathname != '/') {
-	document.getElementById("header-main").className = "header header-light head-shadow";
-}
 
 $(function() {
     "use strict";

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+    {% load static %}
+	<head>
+		<meta charset="utf-8" />
+		<meta name="author" content="Themezhub" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>SkillUp - Online Learning Platform</title>
+        <!-- Custom CSS -->
+        <link href="{% static 'css/main.css' %}" rel="stylesheet">
+    </head>
+    <body>
+        <div id="main-wrapper">
+			<div class="header header-light">
+				{% include 'base/header.html' %}
+			</div>
+			<div class="clearfix"></div>
+			<!-- ============================ Dashboard: Dashboard Start ================================== -->
+			<section class="gray pt-4">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-lg-3 col-md-3">
+							<div class="dashboard-navbar">
+								<div class="d-user-avater">
+									<img src="https://via.placeholder.com/500x500" class="img-fluid avater" alt="">
+									<h4>{{ user.get_full_name }}</h4>
+									<span>{{ user.status_v }}</span>
+								</div>
+								{% include 'base/navigation.html' %}
+							</div>
+						</div>	
+						<div class="col-lg-9 col-md-9 col-sm-12">
+                            {% block content %}{% endblock content %}
+                        </div>
+					</div>
+				</div>
+			</section>
+			<!-- ============================ Dashboard: Dashboard End ================================== -->
+			{% include 'base/login-modal.html' %}
+			{% include 'base/footer.html' %}
+		</div>
+        {% include 'base/script.html' %}
+		<!-- Morris.js charts -->
+		<script src="{% static 'js/raphael.min.js' %}"></script>
+		<script src="{% static 'js/morris.min.js' %}"></script>
+		<!-- Custom Morrisjs JavaScript -->
+		<script src="{% static 'js/morris.js' %}"></script>
+	</body>
+</html>

@@ -24,7 +24,9 @@
 	</head>
     <body>
         <div id="main-wrapper">
-			{% include 'base/header.html' %}
+			<div class="header header-transparent dark-text" id="header-main">
+				{% include 'base/header.html' %}
+			</div>
 			<div class="clearfix"></div>
 			{% block content %}{% endblock content %}
 			{% include 'base/login-modal.html' %}

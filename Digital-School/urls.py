@@ -8,6 +8,7 @@ urlpatterns = i18n_patterns(
     path("i18n/", include('django.conf.urls.i18n')),
     path('admin/', admin.site.urls),
     path('', include("Core.urls")),    
+    path('school/', include("School.urls")),    
     path('accounts/', include("User.urls")),    
     prefix_default_language=False,
 )

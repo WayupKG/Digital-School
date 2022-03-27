@@ -14,3 +14,7 @@ def get_csrf(request):
     response = JsonResponse({'detail': 'CSRF cookie set'})
     response['X-CSRFToken'] = get_token(request)
     return response
+
+
+class DashboardView(TemplateView):
+    template_name = 'base/dashboard.html'
