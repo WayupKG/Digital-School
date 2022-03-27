@@ -61,6 +61,9 @@ class User(AbstractBaseUser, PermissionsMixin):
         '''Отправляет электронное письмо этому пользователю.'''
         send_mail(subject, message, from_email, [self.email], **kwargs)
 
+    def __str__(self) -> str:
+        return f"{self.get_full_name()}"
+
 
 class Parent(models.Model):
     """Родитель (Отец, Мать)"""
