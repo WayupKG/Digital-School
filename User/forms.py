@@ -3,7 +3,7 @@ from django import forms
 from django.core.exceptions import ValidationError
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate
-from django.utils.translation import  ugettext as _
+from django.utils.translation import ugettext as _
 
 from .models import User, Parent, Student
 
@@ -15,10 +15,11 @@ class BaseForm(forms.ModelForm):
             visible.field.widget.attrs['class'] = 'form-control'
             visible.field.widget.attrs['required'] = 'required'
             visible.field.widget.attrs['placeholder'] = visible.label
-            
+
 
 class UserRegisterForm(UserCreationForm):
     """ Форма для регистрации аккаунта """
+
     class Meta:
         model = User
         fields = ['email', 'password1', 'password2']
@@ -28,7 +29,7 @@ class UserRegisterForm(UserCreationForm):
         if User.objects.filter(email__iexact=email).exists():
             raise forms.ValidationError("Пользователь с таким адресом электронной почты уже существует")
         return email
-    
+
     def __init__(self, *args, **kwargs):
         super(UserRegisterForm, self).__init__(*args, **kwargs)
         for visible in self.visible_fields():
@@ -39,6 +40,7 @@ class UserRegisterForm(UserCreationForm):
 
 class ParentForm(BaseForm):
     """ Форма для регистрации родителей """
+
     class Meta:
         model = Parent
         fields = '__all__'
@@ -46,6 +48,7 @@ class ParentForm(BaseForm):
 
 class StudentRegisterForm(BaseForm):
     """ Форма для регистрации студентов """
+
     class Meta:
         model = Student
         fields = ['last_name', 'first_name', 'sur_name',
@@ -83,7 +86,7 @@ class AuthenticationForm(forms.Form):
                 self.get_invalid_login_error('invalid_login')
             elif not self.user_cache.is_active:
                 self.get_invalid_login_error('inactive')
-        return self.cleaned_data            
+        return self.cleaned_data
 
     def get_user(self):
         return self.user_cache

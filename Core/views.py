@@ -18,3 +18,8 @@ def get_csrf(request):
 
 class DashboardView(TemplateView):
     template_name = 'base/dashboard.html'
+
+
+
+
+
