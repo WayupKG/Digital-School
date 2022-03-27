@@ -65,30 +65,30 @@ class Parent(models.Model):
         verbose_name = _('Родитель')
         verbose_name_plural = _('Родители')
 
-    PARENT = (
-        (None, 'Выберите родителя'),
-        ('father', 'Отец'),
-        ('mother', 'Мать')
-    )
+    father_last_name = models.CharField(_('Фамилия'), max_length=40)
+    father_first_name = models.CharField(_('Имя'), max_length=40)
+    father_sur_name = models.CharField(_('Отчество'), max_length=50, blank=True, null=True)
+    father_phone = models.CharField(_("Номер телефона"), max_length=15)
+    father_job = models.CharField(_("Работа"), max_length=255)
 
-    last_name = models.CharField(_('Фамилия'), max_length=40)
-    first_name = models.CharField(_('Имя'), max_length=40)
-    sur_name = models.CharField(_('Отчество'), max_length=50, blank=True, null=True)
-    parent = models.CharField(_(""), max_length=10, choices=PARENT)
-    phone = models.CharField(_("Номер телефона"), max_length=15)
-    job = models.CharField(_("Работа"), max_length=255)
+    mother_last_name = models.CharField(_('Фамилия'), max_length=40)
+    mother_first_name = models.CharField(_('Имя'), max_length=40)
+    mother_sur_name = models.CharField(_('Отчество'), max_length=50, blank=True, null=True)
+    mother_phone = models.CharField(_("Номер телефона"), max_length=15)
+    mother_job = models.CharField(_("Работа"), max_length=255)
 
     def __str__(self) -> str:
-        return f"{self.last_name} {self.first_name}"
+        return f"{self.father_first_name} {self.mother_first_name}"
 
-    def get_full_name(self):
-        '''Возвращает first_name, last_name и sur_name с пробелом между ними.'''
-        if self.sur_name:
-            return f"{self.first_name} {self.last_name} {self.sur_name}"
-        return f"{self.first_name} {self.last_name}"
-
-    def get_name_translit(self):
-        return get_translit(self.get_full_name)
+    def get_father_full_name(self):
+        if self.father_sur_name:
+            return f"{self.father_last_name} {self.father_first_name} {self.father_sur_name}"
+        return f"{self.father_last_name} {self.father_first_name}"
+    
+    def get_mother_full_name(self):
+        if self.mother_sur_name:
+            return f"{self.mother_last_name} {self.mother_first_name} {self.mother_sur_name}"
+        return f"{self.mother_last_name} {self.mother_first_name}"
 
 
 class Student(models.Model):
@@ -108,14 +108,14 @@ class Student(models.Model):
     sur_name = models.CharField(_('Отчество'), max_length=50, blank=True, null=True)
     account = models.OneToOneField(User, verbose_name=_("Аккаунт"), on_delete=models.PROTECT)
     gender = models.CharField(_("Пол"), max_length=10, choices=GENDER)
+    date_birth = models.DateField(_("Дата рождения"))
     address = models.CharField(_("Адрес"), max_length=255)
     phone = models.CharField(_("Номер телефона"), max_length=15)
     school = models.ForeignKey('School.School', verbose_name=_("Школа"),
                                on_delete=models.PROTECT, related_name="students")
     edu_grade = models.ForeignKey('School.AcademicClass', verbose_name=_("Академический класс"), on_delete=models.PROTECT)
     image = models.ImageField(verbose_name=_("Фотография"), upload_to=upload_to_image, null=True, blank=True)
-    parents = models.ManyToManyField(Parent, verbose_name=_("Родители"),
-                                    related_name='students')
+    parent = models.ForeignKey(Parent, verbose_name=_("Родители"), on_delete=models.CASCADE, related_name="students")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -131,7 +131,7 @@ class Student(models.Model):
         return f"{self.first_name} {self.last_name}"
 
     def get_name_translit(self):
-        return get_translit(self.get_full_name)
+        return get_translit(self.get_full_name())
 
     def get_short_name(self):
         '''Возвращает сокращенное имя пользователя.'''

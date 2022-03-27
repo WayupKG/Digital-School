@@ -925,7 +925,10 @@ padding: 2px;
 margin-right: 10px;
 text-align: center;
 }
-
+.parent-checkbox {
+    font-size: 20px;
+    font-weight: 600;
+}
 .checkbox-custom:checked + .checkbox-custom-label:before {
     background: rgba(5, 175, 120,0.1);
     border-radius: 2px;
@@ -936,7 +939,7 @@ text-align: center;
     font-family: Fontawesome;
     position: absolute;
     left: 5px;
-    top:4px;
+    top: 7px;
     font-size: 10px;
     color: #05af78;
 	font-weight: 400;
@@ -1198,7 +1201,7 @@ label i.count{
     margin: 0 !important;
     box-shadow: none !important;
     background: #ffffff;
-    border:1px solid #e6ebf5;
+    border:1px solid #76787b;
     color: #707e9c;
     border-radius: 4px;
 }
@@ -1238,7 +1241,7 @@ span.select2-selection.select2-selection--single {
     padding-left: 15px;
 	color:#707e9c;
     border-radius: 4px;
-    border: 1px solid #e6ebf5;
+    border: 1px solid #76787b;
 }
 .select2-container--default .select2-selection--single .select2-selection__rendered {
     line-height: 54px;
@@ -4157,37 +4160,38 @@ ul.lt_cr_list li i{
 .pro_product_wrap ul li strong {
     flex: 1;
 }
-.pay_opy980 {
+.parent {
     width: 100%;
     position: relative;
     display: block;
 }
-#payaccordion .panel.panel-default {
+#parent__accordion .panel.panel-default {
     background: #ffffff;
     box-shadow: none;
     border-radius: 4px;
     overflow: hidden;
     margin-bottom: 20px;
 }
-#payaccordion .panel-default>.panel-heading {
+#parent__accordion .panel-default>.panel-heading {
     color: #0047ab;
     padding: 14px 15px;
     background-color: #ffffff;
     border-color: #eaeff5;
 }
-#payaccordion .panel-default>.panel-heading h4 {
+#parent__accordion .panel-default>.panel-heading h4 {
     margin: 0;
     font-size: 17px;
 }
-#payaccordion .panel-default .panel-body {
+#parent__accordion .panel-default .panel-body {
     padding: 1.5rem 2rem;
 }
-#payaccordion .panel-default>.panel-heading h4 a {
+#parent__accordion .panel-default>.panel-heading h4 a {
     color: #202738;
     position: relative;
     padding-left: 25px;
+    font-size: 25px;
 }
-#payaccordion .panel-default>.panel-heading h4 a:before {
+#parent__accordion .panel-default>.panel-heading h4 a:before {
     content: "";
     position: absolute;
     width: 18px;
@@ -4203,7 +4207,7 @@ ul.lt_cr_list li i{
     color: #ffffff;
     transition: all ease 0.4s;
 }
-#payaccordion .panel-default>.panel-heading h4 a[aria-expanded="true"]:before {
+#parent__accordion .panel-default>.panel-heading h4 a[aria-expanded="true"]:before {
     content: "\e64c";
     font-family: 'themify';
     background: #11af6d;

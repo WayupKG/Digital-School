@@ -1,25 +1,12 @@
-import email
-from pyexpat import model
+from dataclasses import fields
 from django import forms
 from django.core.exceptions import ValidationError
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth import authenticate
 from django.utils.translation import  ugettext as _
 
-from .models import User, Student
+from .models import User, Parent, Student
 
-
-# class UserRegisterForm(UserCreationForm):
-#     """ Форма для регистрации """
-#     class Meta:
-#         model = User
-#         fields = ['username', 'email', 'password1', 'password2']
-
-#     def clean_email(self):
-#         email = self.cleaned_data["email"]
-#         if User.objects.filter(email__iexact=email).exists():
-#             raise forms.ValidationError("Пользователь с таким адресом электронной почты уже существует")
-#         return email
 
 class BaseForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
@@ -28,20 +15,41 @@ class BaseForm(forms.ModelForm):
             visible.field.widget.attrs['class'] = 'form-control'
             visible.field.widget.attrs['required'] = 'required'
             visible.field.widget.attrs['placeholder'] = visible.label
+            
+
+class UserRegisterForm(UserCreationForm):
+    """ Форма для регистрации аккаунта """
+    class Meta:
+        model = User
+        fields = ['email', 'password1', 'password2']
+
+    def clean(self):
+        email = self.cleaned_data["email"]
+        if User.objects.filter(email__iexact=email).exists():
+            raise forms.ValidationError("Пользователь с таким адресом электронной почты уже существует")
+        return email
+    
+    def __init__(self, *args, **kwargs):
+        super(UserRegisterForm, self).__init__(*args, **kwargs)
+        for visible in self.visible_fields():
+            visible.field.widget.attrs['class'] = 'form-control'
+            visible.field.widget.attrs['required'] = 'required'
+            visible.field.widget.attrs['placeholder'] = visible.label
+
+
+class ParentForm(BaseForm):
+    """ Форма для регистрации родителей """
+    class Meta:
+        model = Parent
+        fields = '__all__'
 
 
 class StudentRegisterForm(BaseForm):
     """ Форма для регистрации студентов """
-    email = forms.EmailField(label="Электронная почта")
-    password1 = forms.CharField(label="Пароль", widget=forms.PasswordInput())
-    password2 = forms.CharField(label="Повторите пароль", widget=forms.PasswordInput())
-
     class Meta:
         model = Student
-        exclude = ('account', 'parents',)
-        # widgets = {
-        #     'last_name': forms.CharField(attrs={'': 'Фамилия'}),
-        # }
+        fields = ['last_name', 'first_name', 'sur_name',
+                  'gender', 'date_birth', 'address', 'phone', 'school', 'edu_grade', 'image']
 
 
 class AuthenticationForm(forms.Form):

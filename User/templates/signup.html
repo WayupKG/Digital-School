@@ -6,113 +6,149 @@
 {% block content %}
 <!-- ============================ Our Story Start ================================== -->
 <section class="gray-simple">
-			
 	<div class="container">
-	
 		<!-- row Start -->
 		<div class="row submit-page mb-4">
 			<div class="xl-12 col-lg-12 col-md-12">
 				<div class="alert alert-success text-center mb-0" role="alert">
-					У вас уже есть аккаунт? <a href="#" data-toggle="collapse" data-target="#login-frm">Пожалуйста, войдите</a>
-				</div>
-			</div>
-		
-			<div class="col-xl-12 col-lg-12 col-md-12">	
-				<div id="login-frm" class="collapse mt-3">
-					<div class="row">
-						
-						<div class="col-lg-5 col-md-4 col-sm-6">
-							<div class="form-group">
-								<div class="input-with-icon">
-									<input type="text" class="form-control" placeholder="Username">
-									<i class="ti-search"></i>
-								</div>
-							</div>
-						</div>
-						
-						<div class="col-lg-5 col-md-4 col-sm-6">
-							<div class="form-group">
-								<div class="input-with-icon">
-									<input type="text" class="form-control" placeholder="*******">
-									<i class="ti-lock"></i>
-								</div>
-							</div>
-						</div>
-						
-						<div class="col-lg-2 col-md-4 col-sm-12">
-							<div class="form-group">
-								<button type="submit" class="btn theme-bg text-white btn-md full-width">Submit</button>
-							</div>
-						</div>
-						
-						<div class="col-lg-3 col-md-4 col-sm-6">
-							<input id="a-1" class="checkbox-custom" name="a-1" type="checkbox">
-							<label for="a-1" class="checkbox-custom-label">Remember Me</label>
-						</div>
-						
-						<div class="col-lg-3 col-md-4 col-sm-6 mt-2">
-							<a href="#" class="theme-cl">Forget Password?</a>
-						</div>
-						
-					</div>
+					У вас уже есть аккаунт? <a href="#" data-toggle="modal" data-target="#login">Пожалуйста, войдите</a>
 				</div>
 			</div>
 		</div>
-		<!-- /row -->
-
 		<!-- row Start -->
 		<div class="row frm_submit_block">
-			<div class="col-lg-8 col-md-12 col-sm-12">
-				<div class="submit-page mb-4">
+			<div class="col-lg-12 col-md-12 col-sm-12">
+				<form method="POST" enctype="multipart/form-data" class="submit-page mb-4">
 					<!-- row -->
 					<div class="row">
-						
 						<div class="col-lg-12 col-md-12 col-sm-12">
 							<h3 class="ml-0">Создать учетную запись</h3>
 						</div>
-						
-						{% for field in form %}
-							<div class="col-xl-6 col-lg-12 col-md-12 col-sm-12">
+						{{form_user.errors}}
+						{% for field in form_user %}
+							<div class="col-xl-4 col-lg-12 col-md-12 col-sm-12">
 								<div class="form-group">
+									<p class="form__errors">{{ field.errors }}</p>
+									{{ field.label_tag }}
+									{{ field }}
+								</div>
+							</div>
+						{% endfor %}
+						{% for field in form %}
+							<div class="col-xl-4 col-lg-12 col-md-12 col-sm-12">
+								<div class="form-group">
+									<p class="form__errors">{{ field.errors }}</p>
 									{{ field.label_tag }}
 									{{ field }}
 								</div>
 							</div>
 						{% endfor %}
 
+						<div class="panel-group parent" id="parent__accordion">
+							<div class="panel panel-default border">
+								<div class="panel-heading" id="parent_dop">
+									<h4 class="panel-title">
+										<a data-toggle="collapse" href="#parent__accordion" data-target="#parent_ac" aria-expanded="true"  aria-controls="parent_ac" class="">Информация о родителях</a>
+									</h4>
+								</div>
+								<div id="parent_ac" class="panel-collapse collapse show" aria-labelledby="parent_ac" data-parent="#parent__accordion">
+									<div class="panel-body">
+										<div class="title">
+											<h3>Отец</h3>
+										</div>
+										<div class="father-body row">
+											<div class="col-xl-4 col-lg-12 col-md-12 col-sm-12">
+												<div class="form-group">
+													{{ parent_form.father_last_name.label_tag }}
+													{{ parent_form.father_last_name }}
+												</div>
+											</div>
+											<div class="col-xl-4 col-lg-12 col-md-12 col-sm-12">
+												<div class="form-group">
+													{{ parent_form.father_first_name.label_tag }}
+													{{ parent_form.father_first_name }}
+												</div>
+											</div>
+											<div class="col-xl-4 col-lg-12 col-md-12 col-sm-12">
+												<div class="form-group">
+													{{ parent_form.father_sur_name.label_tag }}
+													{{ parent_form.father_sur_name }}
+												</div>
+											</div>
+											<div class="col-xl-4 col-lg-12 col-md-12 col-sm-12">
+												<div class="form-group">
+													{{ parent_form.father_phone.label_tag }}
+													{{ parent_form.father_phone }}
+												</div>
+											</div>
+											<div class="col-xl-4 col-lg-12 col-md-12 col-sm-12">
+												<div class="form-group">
+													{{ parent_form.father_job.label_tag }}
+													{{ parent_form.father_job }}
+												</div>
+											</div>
+										</div>
+										
+										<div class="title"><hr><h3>Мать</h3></div>
+
+										<div class="mother-body row">
+											<div class="col-xl-4 col-lg-12 col-md-12 col-sm-12">
+												<div class="form-group">
+													{{ parent_form.mother_last_name.label_tag }}
+													{{ parent_form.mother_last_name }}
+												</div>
+											</div>
+											<div class="col-xl-4 col-lg-12 col-md-12 col-sm-12">
+												<div class="form-group">
+													{{ parent_form.mother_first_name.label_tag }}
+													{{ parent_form.mother_first_name }}
+												</div>
+											</div>
+											<div class="col-xl-4 col-lg-12 col-md-12 col-sm-12">
+												<div class="form-group">
+													{{ parent_form.mother_sur_name.label_tag }}
+													{{ parent_form.mother_sur_name }}
+												</div>
+											</div>
+											<div class="col-xl-4 col-lg-12 col-md-12 col-sm-12">
+												<div class="form-group">
+													{{ parent_form.mother_phone.label_tag }}
+													{{ parent_form.mother_phone }}
+												</div>
+											</div>
+											<div class="col-xl-4 col-lg-12 col-md-12 col-sm-12">
+												<div class="form-group">
+													{{ parent_form.mother_job.label_tag }}
+													{{ parent_form.mother_job }}
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-xl-6 col-lg-12 col-md-12 col-sm-12 m-auto">
+							<div class="form-group">
+								<button type="submit" class="btn theme-bg text-white btn-md full-width">Отправить</button>
+							</div>
+						</div>
 					</div>
 					<!--/row -->
-				</div>
-				
+					{% csrf_token %}
+				</form>
 			</div>	
-			
-			<!-- Col-lg 4 -->
-			<div class="col-lg-4 col-md-12 col-sm-12">
-				
-				<div class="col-lg-12 col-md-12 col-sm-12">
-					<h3>Your Order</h3>
-				</div>
-				
-				<div class="col-lg-12 col-md-12 col-sm-12">
-					<div class="pro_product_wrap">
-						<h5>Platinum</h5>
-						<ul>
-							<li><strong>Total</strong>$319</li>
-							<li><strong>Subtotal</strong>$319</li>
-							<li><strong>Tax</strong>$10</li>
-							<li><strong>Total</strong>$329</li>
-						</ul>
-					</div>
-				</div>
-				
-			</div>
-			<!-- /col-lg-4 -->
 		</div>
 		<!-- /row -->					
-		
 	</div>
-			
 </section>
 <!-- ============================ Our Story End ================================== -->
 {% endblock content %}
+
+{% block script %}
+	<script>
+		input_date = document.getElementById("id_date_birth").type = 'date'; // находите эл-нт по id
+		sur_name = document.getElementById("id_sur_name").required = false;// находите эл-нт по id
+	</script>
+{% endblock script %}
 
