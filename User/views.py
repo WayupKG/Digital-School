@@ -33,7 +33,7 @@ class SignUpStudent(View):
             student = form.save(commit=False)
             if form_user.is_valid():
                 user = form_user.save(commit=False)
-                user.last_name = student.last_name 
+                user.last_name = student.last_name
                 user.first_name = student.first_name
                 if parent_form.is_valid():
                     parent = parent_form.save(commit=False)
@@ -42,18 +42,20 @@ class SignUpStudent(View):
                     parent.save()
                     user.save()
                     student.save()
-            
+
         return render(self.request, self.template_name, context)
 
 
 class AuthenticationValidator(View):
     """ Валидатор аутентификации """
+
     def post(self, *args, **kwargs) -> JsonResponse:
         form, context = AuthenticationForm(None, self.request.POST), {'success': False}
         if form.is_valid():
             login(self.request, form.get_user())
             context['success'] = True
-        else: context['errors'] = form.errors
+        else:
+            context['errors'] = form.errors
         return JsonResponse(context)
 
 
