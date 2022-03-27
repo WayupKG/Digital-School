@@ -63,31 +63,25 @@ class AuthenticationForm(forms.Form):
         """
         self.request = request
         self.user_cache = None
-        self.user = None
         super().__init__(*args, **kwargs)
 
- 
     def clean(self):
         email = self.cleaned_data.get('email').lower()
         password = self.cleaned_data.get('password')
 
         if email is not None and password:
-            self.user = User.objects.filter(email=email).get()
-            if not self.user.is_active:
-                raise ValidationError(
-                    self.error_messages['inactive'],
-                    code='inactive',
-                )
             self.user_cache = authenticate(self.request, email=email, password=password)
             if self.user_cache is None:
-                raise self.get_invalid_login_error()
+                self.get_invalid_login_error('invalid_login')
+            elif not self.user_cache.is_active:
+                self.get_invalid_login_error('inactive')
         return self.cleaned_data            
 
     def get_user(self):
         return self.user_cache
 
-    def get_invalid_login_error(self):
-        return ValidationError(
-            self.error_messages['invalid_login'],
-            code='invalid_login'
+    def get_invalid_login_error(self, error):
+        raise ValidationError(
+            self.error_messages[error],
+            code=error,
         )
