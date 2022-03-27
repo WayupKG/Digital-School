@@ -374,15 +374,15 @@ $(function() {
 		allowClear: true
 	});
 	
-	// Select City
-	$('#town').select2({
-		placeholder: "Select City",
+	// Select EduGrade
+	$('#id_edu_grade').select2({
+		placeholder: "Выберите класс",
 		allowClear: true
 	});
 	
-	// Select Country
-	$('#country').select2({
-		placeholder: "Select Country",
+	// Select School
+	$('#id_school').select2({
+		placeholder: "Выберите школу",
 		allowClear: true
 	});
 	

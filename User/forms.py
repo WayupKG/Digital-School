@@ -25,7 +25,7 @@ class BaseForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(BaseForm, self).__init__(*args, **kwargs)
         for visible in self.visible_fields():
-            visible.field.widget.attrs['class'] = 'form-control country'
+            visible.field.widget.attrs['class'] = 'form-control'
             visible.field.widget.attrs['required'] = 'required'
             visible.field.widget.attrs['placeholder'] = visible.label
 

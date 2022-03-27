@@ -13,6 +13,9 @@ function getCookie(name) {
     return cookieValue;
 }
 
+
+
+
 $("#modal__sign__in").submit(function(e) {
     e.preventDefault();
     $('#modal__page').html('<div class="loading__modal__page"><div class="loader"></div></div>')

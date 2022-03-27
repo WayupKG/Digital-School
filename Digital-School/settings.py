@@ -41,7 +41,7 @@ AUTH_USER_MODEL = 'User.User'
 if DEBUG:
     INSTALLED_APPS.append('debug_toolbar')
     MIDDLEWARE.append('debug_toolbar.middleware.DebugToolbarMiddleware')
-    INTERNAL_IPS = ['192.168.8.102', '127.0.0.1']
+    INTERNAL_IPS = ['192.168.8.108', '127.0.0.1']
 
 ROOT_URLCONF = 'Digital-School.urls'
 
@@ -63,6 +63,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'Digital-School.wsgi.application'
 
+CORS_ALLOW_CREDENTIALS = True
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
