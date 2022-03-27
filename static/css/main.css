@@ -2841,7 +2841,7 @@ li.login-attri .account-drop a {
     font-size: 1.2em;
 }
 .simple_search .btn{
-    height:58px;
+    height: 46px;
 	align-items:center;
 	justify-content:center;
     font-weight: 800;
@@ -7549,7 +7549,7 @@ footer.skin-dark-footer ul.footer-bottom-social li a:hover, footer.skin-dark-foo
     box-shadow: none;
     outline: none;
     border: none;
-    height: 60px;
+    height: 48px;
     padding: 0 25px;
 }
 
