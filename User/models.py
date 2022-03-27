@@ -62,7 +62,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         send_mail(subject, message, from_email, [self.email], **kwargs)
 
     def __str__(self) -> str:
-        return f"{self.get_full_name()}"
+        return self.get_full_name()
 
 
 class Parent(models.Model):

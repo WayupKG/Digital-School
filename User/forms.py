@@ -23,7 +23,7 @@ class UserRegisterForm(UserCreationForm):
         model = User
         fields = ['email', 'password1', 'password2']
 
-    def clean(self):
+    def clean_email(self):
         email = self.cleaned_data["email"]
         if User.objects.filter(email__iexact=email).exists():
             raise forms.ValidationError("Пользователь с таким адресом электронной почты уже существует")
