@@ -49,7 +49,7 @@ class SignUpStudent(View):
 class SignUpSuccessfully(TemplateView):
     """Страница Успеха"""
     template_name = 'successfully.html'
-    
+
 
 class AuthenticationValidator(View):
     """ Валидатор аутентификации """
@@ -66,6 +66,7 @@ class AuthenticationValidator(View):
 
 class ActiveStudentView(AdminRequiredMixin, View):
     """Активировать аккаунт ученика"""
+
     def get(self, request, pk, *args, **kwargs):
         student = Student.objects.select_related('account', 'school').get(pk=pk)
         if student.school.admin != request.user:
@@ -73,10 +74,11 @@ class ActiveStudentView(AdminRequiredMixin, View):
         student.account.is_active = True
         student.account.save()
         return redirect('ribbon')
-    
+
 
 class InActiveStudentView(AdminRequiredMixin, View):
     """Деактивировать аккаунт ученика"""
+
     def get(self, request, pk, *args, **kwargs):
         student = Student.objects.select_related('account', 'school').get(pk=pk)
         if student.school.admin != request.user:
@@ -88,6 +90,7 @@ class InActiveStudentView(AdminRequiredMixin, View):
 
 class RemoveStudentView(AdminRequiredMixin, View):
     """Удаление аккаунт ученика"""
+
     def get(self, request, pk, *args, **kwargs):
         student = Student.objects.select_related('account', 'school').get(pk=pk)
         if student.school.admin != request.user:

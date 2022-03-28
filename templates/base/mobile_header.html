@@ -5,11 +5,11 @@
         </a>
         <div class="dropdown-menu">
             <div class="drp_menu_headr">
-                <h4>Привет! {{ user.get_short_name }}</h4>
+                <h4>Привет! {{ user.first_name }}</h4>
             </div>
             <ul>
-                <li><a href="my-profile.html"><i class="fa fa-user-tie"></i>Личный кабинет</a></li>                                 
-                <li><a href="manage-students.html"><i class="fa fa-envelope"></i>Уведомление<span class="notti_coun style-3">3</span></a></li>
+                <li><a href="{% url 'ribbon' %}"><i class="fa fa-user-tie"></i>Личный кабинет</a></li>
+                <li><a href="#"><i class="fa fa-envelope"></i>Уведомление<span class="notti_coun style-3">3</span></a></li>
                 <li><a href="{% url 'logout' %}"><i class="fa fa-unlock-alt"></i>Выйти</a></li>
             </ul>
         </div>
