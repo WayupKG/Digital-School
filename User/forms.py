@@ -34,16 +34,15 @@ class UserRegisterForm(UserCreationForm):
         super(UserRegisterForm, self).__init__(*args, **kwargs)
         for visible in self.visible_fields():
             visible.field.widget.attrs['class'] = 'form-control'
-            visible.field.widget.attrs['required'] = 'required'
             visible.field.widget.attrs['placeholder'] = visible.label
 
 
 class ParentForm(BaseForm):
     """ Форма для регистрации родителей """
-
     class Meta:
         model = Parent
         fields = '__all__'
+
 
 
 class StudentRegisterForm(BaseForm):

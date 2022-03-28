@@ -60,17 +60,17 @@ class Parent(models.Model):
         verbose_name = _('Родитель')
         verbose_name_plural = _('Родители')
 
-    father_last_name = models.CharField(_('Фамилия'), max_length=40)
-    father_first_name = models.CharField(_('Имя'), max_length=40)
+    father_last_name = models.CharField(_('Фамилия'), max_length=40, blank=True, null=True)
+    father_first_name = models.CharField(_('Имя'), max_length=40, blank=True, null=True)
     father_sur_name = models.CharField(_('Отчество'), max_length=50, blank=True, null=True)
-    father_phone = models.CharField(_("Номер телефона"), max_length=25)
-    father_job = models.CharField(_("Работа"), max_length=255)
+    father_phone = models.CharField(_("Номер телефона"), max_length=25, blank=True, null=True)
+    father_job = models.CharField(_("Работа"), max_length=255, blank=True, null=True)
 
-    mother_last_name = models.CharField(_('Фамилия'), max_length=40)
-    mother_first_name = models.CharField(_('Имя'), max_length=40)
+    mother_last_name = models.CharField(_('Фамилия'), max_length=40, blank=True, null=True)
+    mother_first_name = models.CharField(_('Имя'), max_length=40, blank=True, null=True)
     mother_sur_name = models.CharField(_('Отчество'), max_length=50, blank=True, null=True)
-    mother_phone = models.CharField(_("Номер телефона"), max_length=25)
-    mother_job = models.CharField(_("Работа"), max_length=255)
+    mother_phone = models.CharField(_("Номер телефона"), max_length=25, blank=True, null=True)
+    mother_job = models.CharField(_("Работа"), max_length=255, blank=True, null=True)
 
     def __str__(self) -> str:
         return f"{self.father_first_name} {self.mother_first_name}"
