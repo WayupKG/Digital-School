@@ -36,7 +36,6 @@ media/*
 !**/logs
 
 build
-doc
 home.rst
 make.bat
 Makefile
