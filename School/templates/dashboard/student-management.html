@@ -1,7 +1,7 @@
 {% extends 'base/dashboard.html' %}
 {% load static %}
 
-{% block title %}Лента{% endblock title %}
+{% block title %}Управление учениками{% endblock title %}
 
 {% block link %}
     <link rel="stylesheet" type="text/css" href="{% static 'plugins/DataTable/css/dataTables.bootstrap4.min.css' %}">
@@ -9,34 +9,6 @@
 {% endblock link %}
 
 {% block content %}
-<div class="row">
-    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12">
-        <div class="dashboard_stats_wrap">
-            <div class="rounded-circle p-4 p-sm-4 d-inline-flex align-items-center justify-content-center bg-purple mb-2"><div class="position-absolute text-white h5 mb-0" style="font-size: 35px"><i class="fas fa-female"></i></div></div>
-            <div class="dashboard_stats_wrap_content"><h4>{{ woman }}</h4> <span>Количество девушек</span></div>
-        </div>	
-    </div>
-    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12">
-        <div class="dashboard_stats_wrap">
-            <div class="rounded-circle p-4 p-sm-4 d-inline-flex align-items-center justify-content-center theme-bg mb-2"><div class="position-absolute text-white h5 mb-0" style="font-size: 35px"><i class="fas fa-male"></i></div></div>
-            <div class="dashboard_stats_wrap_content"><h4>{{ man }}</h4> <span>Количество мальчиков</span></div>
-        </div>	
-    </div>
-    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12">
-        <div class="dashboard_stats_wrap">
-            <div class="rounded-circle p-4 p-sm-4 d-inline-flex align-items-center justify-content-center bg-warning mb-2"><div class="position-absolute text-white h5 mb-0" style="font-size: 25px"><i class="fas fa-users"></i></div></div>
-            <div class="dashboard_stats_wrap_content"><h4>{{ all }}</h4> <span>Всего учеников</span></div>
-        </div>	
-    </div>
-    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12">
-        <div class="dashboard_stats_wrap">
-            <div class="rounded-circle p-4 p-sm-4 d-inline-flex align-items-center justify-content-center bg-primary mb-2"><div class="position-absolute text-white h5 mb-0" style="font-size: 35px"><i class="fas fa-times"></i></div></div>
-            <div class="dashboard_stats_wrap_content"><h4>{{ inactive }}</h4> <span>Неактивнные</span></div>
-        </div>	
-    </div>
-</div>
-
-
 <div class="row">
     <div class="col-lg-12">
         <div class="card">
