@@ -7,18 +7,18 @@
 <div class="row">
     <div class="col-xl-12 col-lg-12 col-md-12">
         <div class="dashboard_wrap">
-            
+
             <div class="row">
                 <div class="col-xl-12 col-lg-12 col-md-12 mb-4">
                     <h6 class="m-0">Информация о ученике</h6>
                 </div>
             </div>
-            
+
             <div class="row justify-content-center">
                 <div class="col-xl-12 col-lg-12 col-md-12">
                     <form method="POST" enctype="multipart/form-data" class="row">
                         {% for field in form %}
-                            <div class="{% if field.name == "image" %}col-xl-12{%else%}col-xl-4{% endif %} col-lg-12 col-md-12 form-group smalls">
+                            <div class="{% if field.name == 'image'  %}col-xl-12{%else%}col-xl-4{% endif %} col-lg-12 col-md-12 form-group smalls">
                                 <p class="form__errors">{{ field.errors }}</p>
                                 {{ field.label_tag }}
                                 {{ field }}
