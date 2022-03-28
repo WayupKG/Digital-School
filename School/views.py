@@ -1,3 +1,4 @@
+from tempfile import template
 from django.shortcuts import render
 from django.views.generic import View, TemplateView, UpdateView, DetailView
 
@@ -21,6 +22,16 @@ class DashboardRibbonView(AdminRequiredMixin, TemplateView):
         context["inactive"] = list(students.values_list('account__is_active')).count((False,))
         return context
     
+
+class ManagementStudentView(AdminRequiredMixin, TemplateView):
+    template_name = 'dashboard/student-management.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["students"] = Student.objects.filter(
+                                                    school__admin=self.request.user
+                                                ).select_related('account', 'school', 'edu_grade')
+        return context                                        
 
 class StudentDetailView(AdminRequiredMixin, View):
     template_name = 'dashboard/student-detail.html'

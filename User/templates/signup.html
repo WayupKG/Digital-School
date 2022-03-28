@@ -145,9 +145,19 @@
 {% endblock content %}
 
 {% block script %}
-	<script>
-		input_date = document.getElementById("id_date_birth").type = 'date'; // находите эл-нт по id
+    <script src="{% static 'js/jquery.maskedinput.min.js' %}"></script>
+    <script type="text/javascript">
+        jQuery(function ($) {
+            $("#id_phone").mask("+996 (111)-11-11-11");
+        });
+		jQuery(function ($) {
+            $("#id_father_phone").mask("+996 (111)-11-11-11");
+        });
+		jQuery(function ($) {
+            $("#id_mother_phone").mask("+996 (111)-11-11-11");
+        });
+        input_date = document.getElementById("id_date_birth").type = 'date'; // находите эл-нт по id
 		sur_name = document.getElementById("id_sur_name").required = false;// находите эл-нт по id
-	</script>
+    </script>
 {% endblock script %}
 

@@ -4,8 +4,8 @@
         <li class="dropdown">
             <a href="javascript:void(0);"><i class="fas fa-user"></i>Ученики<span class="ti-angle-left"></span></a>
             <ul class="nav nav-second-level">
-                <li><a href="manage-students.html">Управление учениками</a></li>
-                <li><a href="add-students.html">Добавить нового ученика</a></li>
+                <li><a href="{% url 'management' %}">Управление учениками</a></li>
+                <li><a href="{% url 'sign_up_student' %}">Добавить нового ученика</a></li>
             </ul>
         </li>
     </ul>
